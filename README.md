@@ -34,9 +34,43 @@
 
 ## 安装
 
-仓库根目录就是 skill 目录（包含 `SKILL.md`、`references/`、`scripts/`、`assets/`）。按 Agent 的 skills 根目录放置即可。
+仓库根目录就是 skill 目录（包含 `SKILL.md`、`references/`、`scripts/`、`assets/`）。`npx skills` 可以直接识别本仓库，DSH 也可以用目录方式安装。
 
-### DSH（DeepSeek Harness）
+### 推荐：skills CLI
+
+先确认仓库能被识别：
+
+```bash
+npx -y skills add kali20gakki/sence_fuzz --list
+```
+
+输出里能看到 `scene-fuzz` 即可安装。
+
+#### Codex
+
+```bash
+npx -y skills add kali20gakki/sence_fuzz --skill scene-fuzz -a codex -g -y
+```
+
+#### Claude Code
+
+```bash
+npx -y skills add kali20gakki/sence_fuzz --skill scene-fuzz -a claude-code -g -y
+```
+
+#### OpenCode
+
+```bash
+npx -y skills add kali20gakki/sence_fuzz --skill scene-fuzz -a opencode -g -y
+```
+
+`-g` 表示安装到用户级 skills 目录，`-y` 表示跳过交互确认；去掉 `-g` 则按当前 Agent 的项目级目录安装。
+
+#### DSH（DeepSeek Harness）
+
+`npx skills` 目前还没有 DSH 目标，DSH 用下面的目录方式安装；DSH 会扫描 skills 目录并热加载。
+
+### DSH（目录安装）
 
 用户级（推荐）：
 
@@ -52,23 +86,25 @@ cp -r ./scene-fuzz ~/.dsh/skills/scene-fuzz
 cp -r ./scene-fuzz <your-repo>/.dsh/skills/scene-fuzz
 ```
 
-DSH 会扫描项目/用户 skills 目录并热加载。验证：新会话里应能看到 `scene-fuzz`，或直接说“用 scene-fuzz 测一下这个仓库”。
+DSH 也会扫描 `~/.agents/skills`、`<projectRoot>/.agents/skills`；放在任一 skills 根目录即可。验证：新会话里应能看到 `scene-fuzz`，或直接说“用 scene-fuzz 测一下这个仓库”。
 
-### Claude Code
+### 手动安装（不使用 skills CLI）
+
+Claude Code：
 
 ```bash
 mkdir -p ~/.claude/skills
 ln -s "$(pwd)" ~/.claude/skills/scene-fuzz
 ```
 
-### Codex
+Codex：
 
 ```bash
 mkdir -p ~/.codex/skills
 ln -s "$(pwd)" ~/.codex/skills/scene-fuzz
 ```
 
-### OpenCode
+OpenCode：
 
 ```bash
 mkdir -p ~/.config/opencode/skills
@@ -76,6 +112,27 @@ ln -s "$(pwd)" ~/.config/opencode/skills/scene-fuzz
 ```
 
 > 不同 Agent 的 skills 根目录可能不同；只要目录里包含 `SKILL.md`，并按 Agent 的加载规则放置即可。
+
+### 更新
+
+使用 skills CLI：
+
+```bash
+npx -y skills check
+npx -y skills update
+```
+
+或重新安装一次最新版：
+
+```bash
+npx -y skills add kali20gakki/sence_fuzz --skill scene-fuzz -a codex -g -y
+```
+
+DSH / 手动安装：
+
+```bash
+git -C ~/.dsh/skills/scene-fuzz pull
+```
 
 ### 前置依赖
 
