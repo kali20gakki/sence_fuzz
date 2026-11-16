@@ -1,0 +1,44 @@
+---
+id: F-001
+severity: S1
+status: confirmed        # confirmed | suspected | env-blocked | not-a-bug
+cases: [C-001]
+invariants: []
+evidence:
+  - 05-evidence/C-001/attempt-1/result.json
+---
+
+## 现象
+
+<一句话 + 关键数据>
+
+## 复现
+
+```bash
+<最小命令>
+```
+
+环境/资源/重复次数/结果分布。
+
+## 证据
+
+- `05-evidence/...`：关键字段/计数/时间。
+- 对照实验（开/关、旧/新、串行/并行）。
+
+## 根因假设
+
+- 代码路径：`path:line`。
+- 机制：锁/缓冲/状态机/生命周期/错误处理。
+- 置信度：高/中/低；未验证部分标 hypothesis。
+
+## 影响
+
+宿主任务/数据/性能/兼容性的具体影响；触发条件与概率。
+
+## 建议
+
+修复方向/需要补的测试/监控。
+
+## 回归
+
+修复后应跑哪些 case/seed。

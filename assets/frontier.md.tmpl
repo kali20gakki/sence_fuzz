@@ -1,0 +1,26 @@
+# 演进前沿
+
+- iteration: <n>
+- updated: <iso>
+- stop: <false/true> <reason>
+
+| 轴 | 当前前沿 | 证据 | 下一目标 |
+|---|---|---|---|
+| load | <n> kernels | <case> | <n×10> |
+| concurrency | <n> threads | <case> | <n+4> |
+| pressure | <n> B buffer | <case> | <n/2> |
+| long-stability | <n> s | <case> | <n×2> |
+| lifecycle | <n> cycles | <case> | <n×2> |
+| overhead | <n>% | <case> | <budget> |
+| rss growth | <n> KB | <case> | <对照 off> |
+
+## Signals
+
+- failures:
+- host_fail:
+- drops:
+- env_blocked:
+
+## Next
+
+- **<axis>** (<priority>): <why> params=<...>

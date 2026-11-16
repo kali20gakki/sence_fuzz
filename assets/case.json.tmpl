@@ -1,0 +1,18 @@
+{
+  "id": "C-001",
+  "title": "<一句话说明验证什么>",
+  "priority": "P0",
+  "risk": "contract|boundary|state|data|concurrency|resource|fault|load|stability|performance|abi|docs",
+  "lineage": "new",
+  "hypothesis": "<可证伪的假设>",
+  "whitebox_refs": ["<path>:<line>"],
+  "requires": [],
+  "resources": [],
+  "exclusive": false,
+  "env": {},
+  "setup": {"cmd": "", "cwd": ".", "timeout_sec": 120},
+  "run": {"cmd": "bash run.sh", "cwd": ".", "timeout_sec": 120},
+  "repeat": 2,
+  "oracle": "<可执行判据：计数/返回码/输出/资源/时间>",
+  "artifacts": []
+}
